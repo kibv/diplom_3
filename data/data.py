@@ -6,6 +6,7 @@ class URLs:
     FEED_URL = BASE_URL + "feed"
     ACCOUNT_URL = BASE_URL + "account/profile"
     ORDER_HISTORY_URL = BASE_URL + "account/order-history"
+    REGISTER_URL_API = BASE_URL + "api/auth/register"
 
 class TestData:
     TEST_EMAIL = "test@example.com"

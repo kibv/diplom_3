@@ -2,6 +2,7 @@ from locators import ResetPasswordPageLocators
 from pages.base_page import BasePage
 
 class ResetPasswordPage(BasePage):
+
     def input_email(self, email):
         self.input_text(ResetPasswordPageLocators.EMAIL_INPUT, email)
 
@@ -12,7 +13,6 @@ class ResetPasswordPage(BasePage):
         self.click(ResetPasswordPageLocators.RESTORE_BUTTON)
 
     def click_show_password(self):
-        # self.wait_for_element(ResetPasswordPageLocators.SHOW_PASSWORD)
         self.click_with_wait(ResetPasswordPageLocators.SHOW_PASSWORD)
 
     def get_password_input(self):

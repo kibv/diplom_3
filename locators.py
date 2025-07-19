@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     LOGIN_BUTTON = (By.XPATH, "//button[text()='Войти в аккаунт']")
+    CREATE_ORDER_BUTTON = (By.XPATH, "//button[text()='Оформить заказ']")
     CONSTRUCTOR_BUTTON = (By.XPATH, "//p[text()='Конструктор']")
     PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//p[text()='Личный Кабинет']")
     REGISTER_LINK = (By.XPATH, "//a[text()='Зарегистрироваться']")
@@ -9,14 +10,20 @@ class MainPageLocators:
     ACCOUNT_BUTTON = (By.XPATH, "//a[@href='/account']")
     FEED_BUTTON = (By.XPATH, "//p[text()='Лента Заказов']")
     LOGO = (By.XPATH, "//div[contains(@class, 'AppHeader_header__logo')]//a")
+    ORDER_NUMBER = (By.CSS_SELECTOR, "h2[class*='Modal_modal__title__']")
+    LOADING_ANIMATION = (By.CSS_SELECTOR, "img[class*='Modal_modal__loading__']")
+    ORDER_MODAL_CONTAINER = (By.CSS_SELECTOR, "div[class*='Modal_modal_overlay__']")
 
 class LoginPageLocators:
-    EMAIL_INPUT = (By.XPATH, "//input[@name='name']")
-    PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")
-    LOGIN_BUTTON = (By.XPATH, "//button[contains(text(), 'Войти')]")
+    EMAIL_INPUT = (By.XPATH, "//label[text()='Email']/following-sibling::input")
+    PASSWORD_INPUT = (By.XPATH, "//label[text()='Пароль']/following-sibling::input")
+    # EMAIL_INPUT = (By.XPATH, "//input[@name='name']")
+    # PASSWORD_INPUT = (By.XPATH, "//input[@type='password']")
+    LOGIN_BUTTON = (By.XPATH, "//button[text()='Войти']")
     LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Войти')]")
     LOGIN_HEADER = (By.XPATH, "//h2[text()='Вход']")
     RESET_PASSWORD_LINK = (By.LINK_TEXT, "Восстановить пароль")
+    RESET_REGISTRATION_LINK = (By.LINK_TEXT, "Зарегистрироваться")
 
 class RegistrationPageLocators:
     NAME_FIELD = (By.XPATH, "//fieldset[1]//input")
@@ -30,6 +37,10 @@ class PersonalAccountLocators:
     PROFILE_LINK = (By.XPATH, "//a[text()='Профиль']")
     ORDER_HISTORY_TAB = (By.XPATH, "//a[contains(text(),'История заказов')]")
     LOGOUT_BUTTON = (By.XPATH, "//button[text()='Выход']")
+
+
+
+    # LOGOUT_BUTTON = (By.CSS_SELECTOR, "button.Account_button__14Yp3")
     RECOVERY_LINK = (By.XPATH, "//a[contains(text(), 'Восстановить пароль')]")
 
 class ConstructorPageLocators:
@@ -38,20 +49,43 @@ class ConstructorPageLocators:
     SAUCES_SECTION = (By.XPATH, "//span[text()='Соусы']/..")
     FILLINGS_SECTION = (By.XPATH, "//span[text()='Начинки']/..")
     ACTIVE_SECTION = (By.CSS_SELECTOR, ".tab_tab_type_current")
-    INGREDIENT = (By.CSS_SELECTOR, ".burger-ingredient")
+    INGREDIENT_1 = (By.XPATH, "//p[text()='Соус Spicy-X']/parent::a")
+    INGREDIENT = (By.XPATH, "//p[text()='Флюоресцентная булка R2-D3']/parent::a")
     INGREDIENT_NAME = (By.CSS_SELECTOR, ".burger-ingredient span")
-    COUNTER = (By.CSS_SELECTOR, ".counter")
-    MODAL = (By.CSS_SELECTOR, ".Modal_modal__content__")
-    CLOSE_MODAL_BUTTON = (By.XPATH, "//button[contains(@class,'modal__close')]")
+    INGREDIENT_COUNTER = (By.XPATH, "//a[.//p[text()='Соус Spicy-X']]//div[contains(@class,'counter_counter')]")
+    CONSTRUCTOR_AREA = (By.XPATH, "//section[contains(@class, 'BurgerConstructor_basket')]")
+
+
+    MODAL_CONTAINER = (By.XPATH, "//div[contains(@class, 'Modal_modal__container')]")
+    MODAL_CONTAINER_IN_ORDER = (By.XPATH, "//div[contains(@class, 'Modal_modal_overlay__x2ZCr')]")
+    CLOSE_MODAL_BUTTON = (By.CSS_SELECTOR, "button[class*='Modal_modal__close']")
+    FIRST_INGREDIENT = (By.XPATH, "(//ul[contains(@class, 'burger-ingredients')]//li)[1]")
+    ALL_INGREDIENTS = (By.XPATH, "//a[contains(@href,'/ingredients/') and .//p]")
+
 
 class FeedPageLocators:
-    FEED_ORDERS = (By.CSS_SELECTOR, ".OrderFeed_order__list__item")
+    # ORDER_FEED_NUMBERS = (By.CSS_SELECTOR, "p[class*='OrderFeed_number__']")
+    ORDER_FEED_NUMBERS = (By.CSS_SELECTOR, "p[class*='text_type_digits-default']")
+    IN_PROGRESS_FEED_NUMBERS = (By.CSS_SELECTOR, "ul.OrderFeed_orderListReady__1YFem li")
+    FEED_ORDERS = (By.CSS_SELECTOR, "a[href^='/feed/']")
+    SEARCH_ORDER_NUMBER = (By.XPATH, "//p[contains(@class, 'Order_Text')]")
+    MODAL_WINDOW = (By.CSS_SELECTOR, "div.Modal_modal__content__2m6uz")
     ORDER_CARD = (By.CSS_SELECTOR, ".OrderFeed_order__list__item")
+    TOTAL_TODAY = (By.XPATH, "//p[text()='Выполнено за сегодня:']")
     ORDER_DETAILS_MODAL = (By.CSS_SELECTOR, ".Modal_modal__content__")
     CLOSE_MODAL_BUTTON = (By.XPATH, "//button[contains(@class,'modal__close')]")
     TOTAL_DONE = (By.XPATH, "//p[text()='Выполнено за всё время']/following-sibling::p")
-    TOTAL_TODAY = (By.XPATH, "//p[text()='Выполнено за сегодня']/following-sibling::p")
+    TOTAL_DONE = (By.XPATH, "//p[text()='Выполнено за всё время:']")
+    # TOTAL_TODAY = (By.XPATH, "//p[text()='Выполнено за сегодня']/following-sibling::p")
+    # MODAL_WINDOW = (By.XPATH, "//div[contains(@class,'Modal_modal__')]")
+    CLOSE_BUTTON = (By.XPATH, "//button[contains(@class,'Modal_modal__close')]")
+    ORDER_SUCCESS_MODAL = (By.XPATH, "//div[contains(@class,'Modal_modal__') and .//p[contains(text(),'идентификатор заказа')]]")
+
+    TOTAL_DONE = (By.XPATH, "//p[contains(text(), 'Выполнено за все время')]/following-sibling::p")
+    TOTAL_TODAY = (By.XPATH, "//p[contains(text(), 'Выполнено за сегодня')]/following-sibling::p")
+    IN_PROGRESS = (By.XPATH, "//p[contains(text(), 'В работе')]/following-sibling::p")
     IN_PROGRESS = (By.XPATH, "//h2[text()='В работе']")
+    HEADER = (By.XPATH, "//h1[text()='Лента заказов']")
 
 # class ResetPasswordPageLocators:
 #     EMAIL_INPUT = (By.XPATH, "//input[@name='name']")
