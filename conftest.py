@@ -72,7 +72,8 @@ def registered_user():
     return {
         "name": name,
         "email": email,
-        "password": password
+        "password": password,
+        "status_code": res.status_code
     }
 
 @pytest.fixture
@@ -107,14 +108,13 @@ def authorized_order(browser, registered_user):
         login_page.login(email, password)
         login_page.wait_for_url_change(URLs.BASE_URL)
         current_url = browser.current_url
-        assert current_url == URLs.BASE_URL, f"Открыт неверный URL: {current_url}"
 
     with allure.step("Создаем заказ"):
         main_page.create_order()
 
     with allure.step("Получаем номер заказа"):
         order_number = main_page.get_order_number()
-        assert order_number is not None, "Не получили номер заказа"
+
 
     return {
         "order_number": order_number,

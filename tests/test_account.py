@@ -9,6 +9,7 @@ class TestAccount:
     def test_account_register(self, browser, registered_user):
         email = registered_user["email"]
         password = registered_user["password"]
+        assert registered_user["status_code"] == 200
 
         with allure.step("Переходим в аккаунт"):
             main_page = MainPage(browser)

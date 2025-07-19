@@ -10,6 +10,7 @@ class TestFeed:
         main = MainPage(browser)
         feed_order = FeedPage(browser)
         main.open(URLs.BASE_URL)
+        assert registered_user["status_code"] == 200
 
         with allure.step("Открываем страницу ленты заказов"):
             main.go_to_feed()
