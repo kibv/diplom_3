@@ -71,6 +71,9 @@ class BasePage:
         except:
             return default
 
+    def wait_el(self, locator):
+        return self.wait.until(EC.presence_of_element_located(locator))
+
     def drag_and_drop_js(self, source_locator, target_locator):
         source = self.wait.until(EC.visibility_of_element_located(source_locator))
         target = self.wait.until(EC.visibility_of_element_located(target_locator))
@@ -96,4 +99,3 @@ class BasePage:
         wait.until_not(
             lambda driver: driver.find_element(*locator).text == text
         )
-

@@ -2,8 +2,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from pages.login_page import RegisterPage
 from pages.main_page import MainPage
+from pages.registration_page import RegistrationPage
 from pages.feed_page import FeedPage
 from pages.login_page import LoginPage
 from data.data import URLs
@@ -46,7 +46,7 @@ def registered_user_web(browser):
     email = generate_email()
     password = generate_password()
 
-    register_page = RegisterPage(browser)
+    register_page = RegistrationPage(browser)
     register_page.open(URLs.REGISTER_URL)
 
     register_page.register(name, email, password)
@@ -107,14 +107,12 @@ def authorized_order(browser, registered_user):
         main_page.login_for_order()
         login_page.login(email, password)
         login_page.wait_for_url_change(URLs.BASE_URL)
-        current_url = browser.current_url
 
     with allure.step("Создаем заказ"):
         main_page.create_order()
 
     with allure.step("Получаем номер заказа"):
         order_number = main_page.get_order_number()
-
 
     return {
         "order_number": order_number,

@@ -1,6 +1,7 @@
 from locators import ResetPasswordPageLocators
 from pages.base_page import BasePage
 
+
 class ResetPasswordPage(BasePage):
 
     def input_email(self, email):

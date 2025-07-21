@@ -3,7 +3,7 @@ from pages.login_page import LoginPage
 from pages.reset_password_page import ResetPasswordPage
 from data.data import TestData, URLs
 
-@allure.feature("Восстановление пароля")
+@allure.title("Восстановление пароля")
 class TestPassword:
     @allure.story("Переход на страницу восстановления пароля и проверка функционала")
     def test_password_reset_flow(self, browser):

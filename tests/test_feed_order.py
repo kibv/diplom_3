@@ -3,7 +3,7 @@ from pages.feed_page import FeedPage
 from pages.main_page import MainPage
 from data.data import URLs
 
-@allure.feature("Лента заказов")
+@allure.title("Лента заказов")
 class TestFeed:
     @allure.story("Открытие деталей заказа")
     def test_order_modal_opens(self, browser, registered_user):
@@ -20,7 +20,7 @@ class TestFeed:
             feed_order.open_order_details()
 
         with allure.step("Проверяем, что открылось всплывающее окно с деталями"):
-            assert feed_order.is_visible_container(), "Модальное окно не появилось"
+            assert main.is_visible_container(), "Модальное окно не появилось"
 
 
     @allure.story("Оформление заказа с авторизацией")

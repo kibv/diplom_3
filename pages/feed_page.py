@@ -1,5 +1,6 @@
-from locators import FeedPageLocators, ConstructorPageLocators
+from locators import FeedPageLocators
 from pages.base_page import BasePage
+
 
 class FeedPage(BasePage):
     def open_order_details(self):
@@ -16,8 +17,11 @@ class FeedPage(BasePage):
         self.wait_for_overlay(FeedPageLocators.TOTAL_TODAY)
         return self.get_text(FeedPageLocators.TOTAL_TODAY)
 
-    def is_visible_container(self):
-        return self.is_visible(ConstructorPageLocators.MODAL_CONTAINER)
+    def get_counter_text_total(self):
+        return self.get_text(FeedPageLocators.TOTAL_DONE)
+
+    def get_counter_text_today(self):
+        return self.get_text(FeedPageLocators.TOTAL_TODAY)
 
     def check_order_in_feed(self, order_number, param):
         locator = getattr(FeedPageLocators, f'{param}_FEED_NUMBERS')

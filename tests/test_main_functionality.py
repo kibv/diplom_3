@@ -2,7 +2,7 @@ import allure
 from pages.feed_page import FeedPage
 from pages.main_page import MainPage
 from data.data import URLs
-@allure.story("Проверка основного функционала")
+@allure.title("Проверка основного функционала")
 class TestMain:
     @allure.feature("Переход в конструктор")
     def test_go_to_constructor(self, browser):
@@ -33,7 +33,6 @@ class TestMain:
     @allure.feature("Модальное окно ингредиента")
     def test_ingredient_modal_close(self, browser):
         main_page = MainPage(browser)
-        modal = FeedPage(browser)
 
         with allure.step("Открываем главную страницу"):
             main_page.open(URLs.BASE_URL)
@@ -45,7 +44,8 @@ class TestMain:
             main_page.close_modal()
 
         with allure.step("Проверяем, что модальное окно закрылось"):
-            modal.is_visible_container(), "Модальное окно не закрылось"
+            main_page.is_visible_container(), "Модальное окно не закрылось"
+
     @allure.feature("Конструктор")
     def test_ingredient_counter_increases(self, browser):
         page = MainPage(browser)
@@ -73,6 +73,3 @@ class TestMain:
             main_page.open(URLs.BASE_URL)
             main_page.go_to_feed()
             assert feed_page.check_order_in_feed(order_number, 'ORDER'), f'Заказ № {order_number} не найден'
-
-
-

@@ -1,22 +1,22 @@
 import allure
 from pages.login_page import LoginPage
-from pages.login_page import RegisterPage
 from pages.main_page import MainPage
+from pages.registration_page import RegistrationPage
 from data.data import URLs
 
-@allure.feature("Личный кабинет")
+@allure.title("Личный кабинет")
 class TestAccount:
     @allure.story("Проверка регистрации")
     def test_account_registration(self, browser, get_credentials):
         name, email, password = get_credentials
-        register_page = RegisterPage(browser)
+        register_page = RegistrationPage(browser)
         main_page = MainPage(browser)
         login_page = LoginPage(browser)
 
         with allure.step("Открываем главную страницу и переходим к регистрации"):
             main_page.open(URLs.BASE_URL)
             main_page.go_to_personal_account()
-            login_page.new_registrathion()
+            login_page.new_registration()
             current_url = browser.current_url
             assert current_url == URLs.REGISTER_URL, f"Открыт неверный URL: {current_url}"
 

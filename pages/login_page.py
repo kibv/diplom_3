@@ -1,26 +1,15 @@
-from locators import LoginPageLocators, MainPageLocators
+from locators import LoginPageLocators
 from data.data import URLs
-
-from locators import RegistrationPageLocators
 from pages.base_page import BasePage
 
-class RegisterPage(BasePage):
-    def register(self, name, email, password):
-        self.wait_for_overlay(RegistrationPageLocators.NAME_FIELD)
-        self.input_text(RegistrationPageLocators.NAME_FIELD, name)
-        self.input_text(RegistrationPageLocators.EMAIL_FIELD, email)
-        self.input_text(RegistrationPageLocators.PASSWORD_FIELD, password)
-        self.click_with_wait(RegistrationPageLocators.REGISTER_BUTTON)
 
 class LoginPage(BasePage):
+
     def open(self, url=URLs.LOGIN_URL):
         super().open(url)
 
-    def new_registrathion(self):
+    def new_registration(self):
         self.click(LoginPageLocators.RESET_REGISTRATION_LINK)
-
-    def wait_el(self):
-        self.wait_page_loaded(MainPageLocators.CONSTRUCTOR_BUTTON)
 
     def login(self, email, password):
         self.input_text(LoginPageLocators.EMAIL_INPUT, email)

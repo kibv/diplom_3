@@ -4,7 +4,7 @@ from pages.account_page import AccountPage
 from pages.main_page import MainPage
 from data.data import URLs
 
-@allure.feature("Личный кабинет")
+@allure.title("Личный кабинет")
 class TestAccount:
     def test_account_register(self, browser, registered_user):
         email = registered_user["email"]
